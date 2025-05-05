@@ -5,14 +5,7 @@ import java.util.Set;
 import com.soccperfil.permissao.Permissao;
 import com.soccperfil.usuario.Usuario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "perfil")
@@ -42,20 +35,28 @@ public class Perfil {
             joinColumns = @JoinColumn(name = "perfil_id"),
             inverseJoinColumns = @JoinColumn(name = "usuario_id"))
     private Set<Usuario> usuarios;
+
+    @Enumerated(EnumType.STRING) // salva o nome do enum como texto no banco
+    private TipoPerfil tipo;
     
     public Perfil() {
     }
-    
-    public Perfil(
-            final String nome,
-            final String descricao,
-            final boolean protegido) {
-        
+
+    public Perfil(String nome, String descricao, boolean protegido, TipoPerfil tipo) {
         this.nome = nome;
         this.descricao = descricao;
         this.protegido = protegido;
+        this.tipo = tipo;
     }
-    
+
+    public Perfil(String nome, String descricao, boolean protegido, String tipo) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.protegido = protegido;
+        this.tipo = TipoPerfil.fromString(tipo); // conversão do Enum
+    }
+
+
     public Integer getPerfilId() {
         return this.perfilId;
     }
@@ -102,6 +103,14 @@ public class Perfil {
     
     public void setUsuarios(final Set<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    public TipoPerfil getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPerfil tipo) {
+        this.tipo = tipo;
     }
     
 }

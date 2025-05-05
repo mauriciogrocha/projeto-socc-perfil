@@ -20,7 +20,7 @@ public class Permissao {
     @GeneratedValue(generator = "seq_permissao")
     private Integer permissaoId;
     
-    private String dscricao;
+    private String descricao;
     
     @ManyToMany(mappedBy = "permissoes")
     private Set<Perfil> perfis;
@@ -29,7 +29,7 @@ public class Permissao {
     }
     
     public Permissao(final String dscricao) {
-        this.dscricao = dscricao;
+        this.descricao = dscricao;
     }
     
     public Integer getPermissaoId() {
@@ -41,11 +41,11 @@ public class Permissao {
     }
     
     public String getDscricao() {
-        return this.dscricao;
+        return this.descricao;
     }
     
     public void setDscricao(final String dscricao) {
-        this.dscricao = dscricao;
+        this.descricao = dscricao;
     }
     
     public Set<Perfil> getPerfis() {

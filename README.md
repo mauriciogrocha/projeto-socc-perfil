@@ -41,9 +41,10 @@ As funcionalidades implementadas cobrem os seguintes fluxos:
 
 ## ✅ Pré-Requisitos
 
-- JDK 17 ou superior
+- JDK 17
 - Gradle (para gerenciamento de dependências)
 - IDE de sua preferência (ex: IntelliJ IDEA, Eclipse, VS Code)
+- Postgres
 
 ## 🚀 Como Executar o Projeto
 

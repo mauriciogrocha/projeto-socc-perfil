@@ -1,8 +1,6 @@
-package com.soccperfil.permissao;
+package com.soccperfil.model;
 
 import java.util.Set;
-
-import com.soccperfil.perfil.Perfil;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

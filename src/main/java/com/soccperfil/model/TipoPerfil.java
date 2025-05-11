@@ -1,4 +1,4 @@
-package com.soccperfil.perfil;
+package com.soccperfil.model;
 
 public enum TipoPerfil {
 
@@ -10,19 +10,19 @@ public enum TipoPerfil {
     SECRETARIO("Secretário"),
     DISCENTE("Discente");
 
-    private final String nomeAmigavel;
+    private final String descricao;
 
-    TipoPerfil(String nomeAmigavel) {
-        this.nomeAmigavel = nomeAmigavel;
+    TipoPerfil(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getNomeAmigavel() {
-        return nomeAmigavel;
+    public String getDescricao() {
+        return descricao;
     }
 
     public static TipoPerfil fromString(String text) {
         for (TipoPerfil tipo : TipoPerfil.values()) {
-            if (tipo.nomeAmigavel.equalsIgnoreCase(text)) {
+            if (tipo.descricao.equalsIgnoreCase(text)) {
                 return tipo;
             }
         }

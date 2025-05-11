@@ -1,9 +1,6 @@
-package com.soccperfil.perfil;
+package com.soccperfil.model;
 
 import java.util.Set;
-
-import com.soccperfil.permissao.Permissao;
-import com.soccperfil.usuario.Usuario;
 
 import jakarta.persistence.*;
 

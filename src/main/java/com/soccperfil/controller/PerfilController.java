@@ -1,7 +1,7 @@
 package com.soccperfil.controller;
 
+import com.soccperfil.Service.PerfilService;
 import com.soccperfil.model.Perfil;
-import com.soccperfil.repository.PerfilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,31 +13,30 @@ import java.util.Optional;
 public class PerfilController {
 
     @Autowired
-    private PerfilRepository perfilRepository;
+    private PerfilService perfilService;
 
     @GetMapping
     public List<Perfil> listar() {
-        return perfilRepository.findAll();
+        return perfilService.listarTodos();
     }
 
     @GetMapping("/{id}")
     public Optional<Perfil> buscarPorId(@PathVariable Integer id) {
-        return perfilRepository.findById(id);
+        return perfilService.buscarPorId(id);
     }
 
     @PostMapping
     public Perfil criar(@RequestBody Perfil perfil) {
-        return perfilRepository.save(perfil);
+        return perfilService.criar(perfil);
     }
 
     @PutMapping("/{id}")
     public Perfil atualizar(@PathVariable Integer id, @RequestBody Perfil perfilAtualizado) {
-        perfilAtualizado.setPerfilId(id);
-        return perfilRepository.save(perfilAtualizado);
+        return perfilService.atualizar(id, perfilAtualizado);
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Integer id) {
-        perfilRepository.deleteById(id);
+        perfilService.deletar(id);
     }
 }

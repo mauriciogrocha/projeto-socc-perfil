@@ -18,7 +18,7 @@ public class Perfil {
     private String descricao;
     
     private boolean protegido;
-    
+
     @ManyToMany
     @JoinTable(
             name = "perfil_permissao",
@@ -50,8 +50,9 @@ public class Perfil {
         this.nome = nome;
         this.descricao = descricao;
         this.protegido = protegido;
-        this.tipo = TipoPerfil.fromString(tipo); // conversão do Enum
+        this.tipo = TipoPerfil.fromString(tipo);
     }
+
 
 
     public Integer getPerfilId() {

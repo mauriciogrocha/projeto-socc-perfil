@@ -1,4 +1,4 @@
-package com.soccperfil.controllers;
+package com.soccperfil.controller;
 
 import com.soccperfil.model.Usuario;
 import com.soccperfil.repository.UsuarioRepository;

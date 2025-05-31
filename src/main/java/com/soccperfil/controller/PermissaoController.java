@@ -1,4 +1,4 @@
-package com.soccperfil.controllers;
+package com.soccperfil.controller;
 
 import com.soccperfil.model.Permissao;
 import com.soccperfil.repository.PermissaoRepository;

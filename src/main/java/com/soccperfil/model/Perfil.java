@@ -2,6 +2,7 @@ package com.soccperfil.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
 
 @Entity
@@ -107,8 +108,9 @@ public class Perfil {
         return tipo;
     }
 
-    public void setTipo(TipoPerfil tipo) {
-        this.tipo = tipo;
+    @JsonSetter("tipo")
+    public void setTipo(String tipo) {
+        this.tipo = TipoPerfil.fromString(tipo);
     }
     
 }

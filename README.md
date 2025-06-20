@@ -101,3 +101,5 @@ http://localhost:8080
 - Perfis protegidos não podem ser editados nem excluídos.
 - Perfis só podem ser excluídos se não houver usuários atribuídos.
 - Os campos obrigatórios (Nome e Descrição) são validados antes de salvar.
+
+Repositorio FrontEnd: https://github.com/EduFleury/Front-Sooc-Perfil

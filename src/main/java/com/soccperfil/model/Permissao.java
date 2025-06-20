@@ -41,11 +41,11 @@ public class Permissao {
         this.permissaoId = permissaoId;
     }
     
-    public String getDscricao() {
+    public String getDescricao() {
         return this.descricao;
     }
     
-    public void setDscricao(final String dscricao) {
+    public void setDescricao(final String dscricao) {
         this.descricao = dscricao;
     }
     

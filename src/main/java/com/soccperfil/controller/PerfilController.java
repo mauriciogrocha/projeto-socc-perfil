@@ -1,5 +1,6 @@
 package com.soccperfil.controller;
 
+import com.soccperfil.DTO.PerfilDTO;
 import com.soccperfil.Service.PerfilService;
 import com.soccperfil.model.Perfil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/perfis")
@@ -16,8 +18,11 @@ public class PerfilController {
     private PerfilService perfilService;
 
     @GetMapping
-    public List<Perfil> listar() {
-        return perfilService.listarTodos();
+    public List<PerfilDTO> listar() {
+
+          return perfilService.listarTodos().stream()
+                .map(PerfilDTO::new)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")

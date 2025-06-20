@@ -2,6 +2,7 @@ package com.soccperfil.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -24,6 +25,7 @@ public class Permissao {
     private String descricao;
     
     @ManyToMany(mappedBy = "permissoes")
+    @JsonIgnore
     private Set<Perfil> perfis;
     
     public Permissao() {

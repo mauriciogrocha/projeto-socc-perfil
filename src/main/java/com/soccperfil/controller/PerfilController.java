@@ -2,10 +2,14 @@ package com.soccperfil.controller;
 
 import com.soccperfil.DTO.PerfilDTO;
 import com.soccperfil.Service.PerfilService;
+import com.soccperfil.repository.PerfilRepository;
 import com.soccperfil.model.Perfil;
+import com.soccperfil.model.Permissao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
+import java.util.Set;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,6 +20,9 @@ public class PerfilController {
 
     @Autowired
     private PerfilService perfilService;
+
+    @Autowired
+    private PerfilRepository perfilRepository;
 
     @GetMapping
     public List<PerfilDTO> listar() {
@@ -48,5 +55,24 @@ public class PerfilController {
     @GetMapping("/tipos")
     public List<String> listarTiposPerfil() {
         return perfilService.listarTiposPerfil();
+    }
+
+    @GetMapping("/{perfilId}/permissoes")
+    public ResponseEntity<Set<Permissao>> listarPermissoes(@PathVariable Integer perfilId) {
+        return perfilRepository.findById(perfilId)
+                .map(perfil -> ResponseEntity.ok(perfil.getPermissoes()))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{perfilId}/permissoes")
+    public ResponseEntity<String> atualizarPermissoes(
+            @PathVariable("perfilId") Integer perfilId,
+            @RequestBody List<Integer> permissaoIds) {
+        try {
+            perfilService.atualizarPermissoes(perfilId, permissaoIds);
+            return ResponseEntity.ok("Permissões atualizadas com sucesso.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

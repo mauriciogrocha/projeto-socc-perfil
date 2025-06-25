@@ -9,9 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import com.soccperfil.model.Perfil;
-
-
 
 @Entity
 @Table(name = "permissao")

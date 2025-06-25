@@ -54,8 +54,6 @@ public class Perfil {
         this.tipo = TipoPerfil.fromString(tipo);
     }
 
-
-
     public Integer getPerfilId() {
         return this.perfilId;
     }

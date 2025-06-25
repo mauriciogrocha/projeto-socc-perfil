@@ -34,36 +34,4 @@ public class PermissaoController {
         return ResponseEntity.ok("Permissao criada com sucesso!");
     }
 
-    //URI final - permissoes/{permissaoId}/perfis/{perfilId}
-    @PutMapping("/{permissaoId}/perfis/{perfilId}")
-    public ResponseEntity<String> atribuir(@PathVariable Integer permissaoId, @PathVariable Integer perfilId) {
-        Optional<Permissao> permissaoOpt = permissaoRepository.findById(permissaoId);
-        Optional<Perfil> perfilOpt = perfilRepository.findById(perfilId);
-
-        if (permissaoOpt.isEmpty() || perfilOpt.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Perfil perfil = perfilOpt.get();
-        perfil.getPermissoes().add(permissaoOpt.get());
-        perfilRepository.save(perfil);
-
-        return ResponseEntity.ok("Permissão atribuida com sucesso!");
-    }
-
-    @DeleteMapping("/{permissaoId}/perfis/{perfilId}")
-    public ResponseEntity<String> deletar(@PathVariable Integer permissaoId, @PathVariable Integer perfilId) {
-        Optional<Permissao> permissaoOpt = permissaoRepository.findById(permissaoId);
-        Optional<Perfil> perfilOpt = perfilRepository.findById(perfilId);
-
-        if (permissaoOpt.isEmpty() || perfilOpt.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Perfil perfil = perfilOpt.get();
-        perfil.getPermissoes().remove(permissaoOpt.get());
-        perfilRepository.save(perfil);
-
-        return ResponseEntity.ok("Permissão removida com sucesso!");
-    }
 }

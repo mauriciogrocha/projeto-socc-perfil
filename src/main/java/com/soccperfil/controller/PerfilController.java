@@ -44,4 +44,9 @@ public class PerfilController {
     public void deletar(@PathVariable Integer id) {
         perfilService.deletar(id);
     }
+    
+    @GetMapping("/tipos")
+    public List<String> listarTiposPerfil() {
+        return perfilService.listarTiposPerfil();
+    }
 }

@@ -1,12 +1,16 @@
 package com.soccperfil.Service;
 
 import com.soccperfil.model.Perfil;
+import com.soccperfil.model.TipoPerfil;
 import com.soccperfil.repository.PerfilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PerfilService {
@@ -40,5 +44,11 @@ public class PerfilService {
 
     public void deletar(Integer id) {
         perfilRepository.deleteById(id);
+    }
+    
+    public List<String> listarTiposPerfil() {
+        return Arrays.stream(TipoPerfil.values())
+                     .map(TipoPerfil::getDescricao)
+                     .collect(Collectors.toList());
     }
 }

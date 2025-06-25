@@ -7,12 +7,15 @@ public class PerfilDTO {
     private String nome;
     private String descricao;
     private boolean protegido;
+    
+    private String tipo;
 
     public PerfilDTO(Perfil perfil) {
         this.perfilId = perfil.getPerfilId();
         this.nome = perfil.getNome();
         this.descricao = perfil.getDescricao();
         this.protegido = perfil.isProtegido();
+        this.tipo = perfil.getTipo() != null ? perfil.getTipo().getDescricao() : null;
     }
 
     public Integer getPerfilId() {
@@ -45,5 +48,13 @@ public class PerfilDTO {
 
     public void setProtegido(boolean protegido) {
         this.protegido = protegido;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+    
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
